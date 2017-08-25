@@ -9,6 +9,9 @@ class Phase_1 extends CI_Controller {
     }
     
     function getFileList(){
+
+        
+
         switch($_POST['sourceType']){
             case 'sdcard' :
                 // linux get sdcard
@@ -20,7 +23,11 @@ class Phase_1 extends CI_Controller {
                 break;
             case 'uploaded' :
                 // from file of www folder
-                $dir = "C:/wamp64/www/commonslab/totem/files/uploaded";
+                if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                    $dir = "C:/wamp64/www/commonslab/Totem/files/uploaded";
+                } else {
+                    $dir = "/var/www/master/Totem/files/uploaded";
+                }
                 break;
         }
         

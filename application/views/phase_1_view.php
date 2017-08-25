@@ -48,7 +48,7 @@
 <script>
      var urlAjax = "<?php 
                 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-                    echo "http://127.0.0.1/commonslabe";
+                    echo "http://127.0.0.1/commonslab";
                 } else {
                     echo "http://127.0.0.1";
                 } ?>";

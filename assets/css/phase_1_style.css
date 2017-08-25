@@ -6,11 +6,13 @@
     margin-right: auto;
     text-align: center;
 }
+.phase_1_content .source_list.big{
+    width:50%;
+}
 
 .phase_1_content .source_list{
     margin-top: 20%;
     display: flex;
-    width:50%;
     margin-left: 25%;
     justify-content: space-between;
 

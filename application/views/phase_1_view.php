@@ -34,7 +34,7 @@
 
 <div class="content phase_1_content">
     <div class="header_text">Where is your file ?</div>
-    <div class="source_list">
+    <div class="source_list big">
             <div data-type="sdcard" class="source_btn"><i class="fa fa-floppy-o" aria-hidden="true"></i><span> SD Card</span></div>
             <div data-type="usb" class="source_btn"><i class="fa fa-usb" aria-hidden="true"></i><span> USB stick</span></div>
             <div data-type="uploaded" class="source_btn"><i class="fa fa-upload" aria-hidden="true"></i><span> Uploaded</span></div>
@@ -51,6 +51,7 @@
     selected_file = [];
     $('.source_btn').on('click', function(){
         $(".source_list").addClass('small');
+        $(".source_list").removeClass('big');
         $(this).addClass('selected');
         $('.header_text').html('Choose your files');
         sourceType = $(this).attr('data-type');

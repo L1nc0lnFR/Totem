@@ -30,26 +30,26 @@ var Viewer_Namespace = {
 
         // Bed
         var plane = new THREE.Mesh(
-            new THREE.PlaneBufferGeometry( Viewer_Namespace.bedSizeW, Viewer_Namespace.bedSizeW ), new THREE.MeshNormalMaterial()
-            //new THREE.MeshPhongMaterial( { color: 0x999999, specular: 0x101010 } )
+            new THREE.PlaneBufferGeometry( Viewer_Namespace.bedSizeW, Viewer_Namespace.bedSizeW ),
+            new THREE.MeshPhongMaterial( { color: 0x999999, specular: 0x101010 } )
         );
         plane.position.set(0,-0.1, 0);
         Viewer_Namespace.rotateObject( plane, 90, 180 ,0);
-        //Viewer_Namespace.scene.add( plane );
-        //plane.receiveShadow = true;
+        Viewer_Namespace.scene.add( plane );
+        plane.receiveShadow = true;
 
         // max height
         var sizeheight = Viewer_Namespace.bedSizeW;
         var divisionsheight = 2;
         var gridHelperheight = new THREE.GridHelper( sizeheight, divisionsheight );
         gridHelperheight.position.set(0, Viewer_Namespace.printerHeight, 0);
-        //Viewer_Namespace.scene.add( gridHelperheight );
+        Viewer_Namespace.scene.add( gridHelperheight );
 
         //grid
         var size = Viewer_Namespace.bedSizeW;
         var divisions = Viewer_Namespace.bedSizeW;
         var gridHelper = new THREE.GridHelper( size, divisions );
-        //Viewer_Namespace.scene.add( gridHelper );
+        Viewer_Namespace.scene.add( gridHelper );
 
         //add file to scene
         Viewer_Namespace.addFile(filePath);
@@ -61,7 +61,7 @@ var Viewer_Namespace = {
         Viewer_Namespace.hemiLight.color.setHSL( 0.6, 1, 0.6 );
         Viewer_Namespace.hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
         Viewer_Namespace.hemiLight.position.set( 0, 50, 0 );
-        //Viewer_Namespace.scene.add( Viewer_Namespace.hemiLight );
+        Viewer_Namespace.scene.add( Viewer_Namespace.hemiLight );
         Viewer_Namespace.hemiLightHelper = new THREE.HemisphereLightHelper( Viewer_Namespace.hemiLight, 10 );
         //scene.add( hemiLightHelper );
 
@@ -70,17 +70,17 @@ var Viewer_Namespace = {
         Viewer_Namespace.dirLight.color.setHSL( 0.1, 1, 0.95 );
         Viewer_Namespace.dirLight.position.set( -1, 1, 1 );
         Viewer_Namespace.dirLight.position.multiplyScalar( 20 );
-        //Viewer_Namespace.scene.add( Viewer_Namespace.dirLight );
-        //Viewer_Namespace.dirLight.castShadow = true;
-        //Viewer_Namespace.dirLight.shadow.mapSize.width = 2048;
-        //Viewer_Namespace.dirLight.shadow.mapSize.height = 2048;
+        Viewer_Namespace.scene.add( Viewer_Namespace.dirLight );
+        Viewer_Namespace.dirLight.castShadow = true;
+        Viewer_Namespace.dirLight.shadow.mapSize.width = 2048;
+        Viewer_Namespace.dirLight.shadow.mapSize.height = 2048;
         var d = 50;
-        //Viewer_Namespace.dirLight.shadow.camera.left = -d;
-        //Viewer_Namespace.dirLight.shadow.camera.right = d;
-        //Viewer_Namespace.dirLight.shadow.camera.top = d;
-        //Viewer_Namespace.dirLight.shadow.camera.bottom = -d;
-        //Viewer_Namespace.dirLight.shadow.camera.far = 3500;
-        //iewer_Namespace.dirLight.shadow.bias = -0.0001;
+        Viewer_Namespace.dirLight.shadow.camera.left = -d;
+        Viewer_Namespace.dirLight.shadow.camera.right = d;
+        Viewer_Namespace.dirLight.shadow.camera.top = d;
+        Viewer_Namespace.dirLight.shadow.camera.bottom = -d;
+        Viewer_Namespace.dirLight.shadow.camera.far = 3500;
+        Viewer_Namespace.dirLight.shadow.bias = -0.0001;
         Viewer_Namespace.dirLightHeper = new THREE.DirectionalLightHelper( Viewer_Namespace.dirLight, 10 ) 
         //scene.add( dirLightHeper );
 
@@ -95,10 +95,9 @@ var Viewer_Namespace = {
         };
         uniforms.topColor.value.copy( Viewer_Namespace.hemiLight.color );
         var skyGeo = new THREE.SphereGeometry( 4000, 32, 15 );
-        //var skyMat = new THREE.ShaderMaterial( { vertexShader: vertexShader, fragmentShader: fragmentShader, uniforms: uniforms, side: THREE.BackSide } );
-        var skyMat =new THREE.MeshNormalMaterial();
+        var skyMat = new THREE.ShaderMaterial( { vertexShader: vertexShader, fragmentShader: fragmentShader, uniforms: uniforms, side: THREE.BackSide } );
         var sky = new THREE.Mesh( skyGeo, skyMat );
-        //Viewer_Namespace.scene.add( sky );
+        Viewer_Namespace.scene.add( sky );
 
         // Viewer_Namespace.renderer
         Viewer_Namespace.renderer = new THREE.WebGLRenderer( { antialias: false } );
@@ -107,7 +106,7 @@ var Viewer_Namespace = {
         //Viewer_Namespace.renderer.gammaInput = true;
         //Viewer_Namespace.renderer.gammaOutput = true;
         //Viewer_Namespace.renderer.shadowMap.enabled = true;
-        //Viewer_Namespace.renderer.shadowMap.renderReverseSided = false;
+        ///Viewer_Namespace.renderer.shadowMap.renderReverseSided = false;
         Viewer_Namespace.container.appendChild( Viewer_Namespace.renderer.domElement );
 
         //Viewer_Namespace.controls
@@ -179,10 +178,9 @@ var Viewer_Namespace = {
             var loader = new THREE.STLLoader();
             loader.load( filePath, function ( geometry ) {
                 var material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
-                //var material = new THREE.MeshNormalMaterial();
                 var mesh = new THREE.Mesh( geometry, material );
-                //mesh.castShadow = true;
-                //mesh.receiveShadow = true;
+                mesh.castShadow = true;
+                mesh.receiveShadow = true;
                 Viewer_Namespace.scene.add( mesh );
         
                 Viewer_Namespace.rotateObject(mesh, -90, 0, 0);
@@ -213,8 +211,7 @@ var Viewer_Namespace = {
                 var mesh = new THREE.Mesh();
                 $.each(geometry, function(index, layer){
                     var geometry = layer;
-                    //var material = new THREE.LineBasicMaterial( {color: 0x003300, opacity:0.4} );
-                    var material = new THREE.MeshNormalMaterial();
+                    var material = new THREE.LineBasicMaterial( {color: 0x003300, opacity:0.4} );
                     var layer_line = new THREE.Line( geometry, material );
                     mesh.add( layer_line );
                 });

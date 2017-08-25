@@ -56,11 +56,16 @@
                     Viewer_Namespace.kill();
                 }
             }
-            
-           
+        
+            var urlAjax = "<?php 
+                if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                    echo "http://127.0.0.1/commonslab/Totem/index.php/main/load_phase";
+                } else {
+                    echo "http://127.0.0.1/Totem/index.php/main/load_phase";
+                } ?>";
 
             $.ajax({  
-                    url: "http://127.0.0.1/Totem/index.php/main/load_phase",
+                    url: urlAjax,
                     method: "POST",
                     data: { phase: phase },
                     dataType :'text',

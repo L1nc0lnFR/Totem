@@ -98,7 +98,7 @@ var Viewer_Namespace = {
         //var skyMat = new THREE.ShaderMaterial( { vertexShader: vertexShader, fragmentShader: fragmentShader, uniforms: uniforms, side: THREE.BackSide } );
         var skyMat =new THREE.MeshNormalMaterial();
         var sky = new THREE.Mesh( skyGeo, skyMat );
-        Viewer_Namespace.scene.add( sky );
+        //Viewer_Namespace.scene.add( sky );
 
         // Viewer_Namespace.renderer
         Viewer_Namespace.renderer = new THREE.WebGLRenderer( { antialias: true } );

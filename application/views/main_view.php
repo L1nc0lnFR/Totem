@@ -3,15 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Totem</title>
-        <script src="<?php echo base_url("assets/js/jquery-3.2.1.min.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
+        <script src="<?php echo base_url("/assets/js/jquery-3.2.1.min.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/jquery-ui-1.12.1/jquery-ui.min.css"); ?><?php echo '?'.mt_rand(); ?>" >
         <script src="<?php echo base_url("/assets/jquery-ui-1.12.1/jquery-ui.min.js"); ?><?php echo '?'.mt_rand(); ?>" ></script>
-        <script src="<?php echo base_url("assets/js/jquery.ui.touch-punch.min"); ?><?php echo '?'.mt_rand(); ?>"></script>
+        <script src="<?php echo base_url("/assets/js/jquery.ui.touch-punch.min"); ?><?php echo '?'.mt_rand(); ?>"></script>
         
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/main_style.css"); ?><?php echo '?'.mt_rand(); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/font-awesome-4.7.0/css/font-awesome.min.css"); ?><?php echo '?'.mt_rand(); ?>">
-        <script src="<?php echo base_url("assets/featherlight/featherlight.min.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/featherlight/featherlight.min.css"); ?><?php echo '?'.mt_rand(); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/main_style.css"); ?><?php echo '?'.mt_rand(); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/font-awesome-4.7.0/css/font-awesome.min.css"); ?><?php echo '?'.mt_rand(); ?>">
+        <script src="<?php echo base_url("/assets/featherlight/featherlight.min.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/featherlight/featherlight.min.css"); ?><?php echo '?'.mt_rand(); ?>">
     </head>
     <body>
         <div class="header">

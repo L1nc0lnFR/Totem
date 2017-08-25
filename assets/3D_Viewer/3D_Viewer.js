@@ -35,7 +35,7 @@ var Viewer_Namespace = {
         );
         plane.position.set(0,-0.1, 0);
         Viewer_Namespace.rotateObject( plane, 90, 180 ,0);
-        Viewer_Namespace.scene.add( plane );
+        //Viewer_Namespace.scene.add( plane );
         //plane.receiveShadow = true;
 
         // max height
@@ -43,13 +43,13 @@ var Viewer_Namespace = {
         var divisionsheight = 2;
         var gridHelperheight = new THREE.GridHelper( sizeheight, divisionsheight );
         gridHelperheight.position.set(0, Viewer_Namespace.printerHeight, 0);
-        Viewer_Namespace.scene.add( gridHelperheight );
+        //Viewer_Namespace.scene.add( gridHelperheight );
 
         //grid
         var size = Viewer_Namespace.bedSizeW;
         var divisions = Viewer_Namespace.bedSizeW;
         var gridHelper = new THREE.GridHelper( size, divisions );
-        Viewer_Namespace.scene.add( gridHelper );
+        //Viewer_Namespace.scene.add( gridHelper );
 
         //add file to scene
         Viewer_Namespace.addFile(filePath);
@@ -178,8 +178,8 @@ var Viewer_Namespace = {
 
             var loader = new THREE.STLLoader();
             loader.load( filePath, function ( geometry ) {
-                //var material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
-                var material = new THREE.MeshNormalMaterial();
+                var material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
+                //var material = new THREE.MeshNormalMaterial();
                 var mesh = new THREE.Mesh( geometry, material );
                 //mesh.castShadow = true;
                 //mesh.receiveShadow = true;

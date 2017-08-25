@@ -30,8 +30,8 @@ var Viewer_Namespace = {
 
         // Bed
         var plane = new THREE.Mesh(
-            new THREE.PlaneBufferGeometry( Viewer_Namespace.bedSizeW, Viewer_Namespace.bedSizeW ),
-            new THREE.MeshPhongMaterial( { color: 0x999999, specular: 0x101010 } )
+            new THREE.PlaneBufferGeometry( Viewer_Namespace.bedSizeW, Viewer_Namespace.bedSizeW ), new THREE.MeshNormalMaterial()
+            //new THREE.MeshPhongMaterial( { color: 0x999999, specular: 0x101010 } )
         );
         plane.position.set(0,-0.1, 0);
         Viewer_Namespace.rotateObject( plane, 90, 180 ,0);
@@ -95,7 +95,8 @@ var Viewer_Namespace = {
         };
         uniforms.topColor.value.copy( Viewer_Namespace.hemiLight.color );
         var skyGeo = new THREE.SphereGeometry( 4000, 32, 15 );
-        var skyMat = new THREE.ShaderMaterial( { vertexShader: vertexShader, fragmentShader: fragmentShader, uniforms: uniforms, side: THREE.BackSide } );
+        //var skyMat = new THREE.ShaderMaterial( { vertexShader: vertexShader, fragmentShader: fragmentShader, uniforms: uniforms, side: THREE.BackSide } );
+        var skyMat =new THREE.MeshNormalMaterial();
         var sky = new THREE.Mesh( skyGeo, skyMat );
         Viewer_Namespace.scene.add( sky );
 
@@ -177,7 +178,8 @@ var Viewer_Namespace = {
 
             var loader = new THREE.STLLoader();
             loader.load( filePath, function ( geometry ) {
-                var material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
+                //var material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
+                var material = new THREE.MeshNormalMaterial();
                 var mesh = new THREE.Mesh( geometry, material );
                 mesh.castShadow = true;
                 mesh.receiveShadow = true;
@@ -211,7 +213,8 @@ var Viewer_Namespace = {
                 var mesh = new THREE.Mesh();
                 $.each(geometry, function(index, layer){
                     var geometry = layer;
-                    var material = new THREE.LineBasicMaterial( {color: 0x003300, opacity:0.4} );
+                    //var material = new THREE.LineBasicMaterial( {color: 0x003300, opacity:0.4} );
+                    var material = new THREE.MeshNormalMaterial();
                     var layer_line = new THREE.Line( geometry, material );
                     mesh.add( layer_line );
                 });

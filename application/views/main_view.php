@@ -13,7 +13,7 @@
         <script src="<?php echo base_url("/assets/featherlight/featherlight.min.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/featherlight/featherlight.min.css"); ?><?php echo '?'.mt_rand(); ?>">
     </head>
-    <body>
+    <body> 
         <div class="header">
             <div data-phase="1" class="phase_1 phase_btn">Phase 1</div>
             <div data-phase="2" class="phase_2 phase_btn">Phase 2</div>

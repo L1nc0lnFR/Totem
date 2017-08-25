@@ -27,13 +27,13 @@
         var selected_file = [];
         
         //debug
-        selected_file = ["files/uploaded/HABU_stand.stl", "files/uploaded/HABU_stand.stl"];
+        //selected_file = ["files/uploaded/HABU_stand.stl", "files/uploaded/HABU_stand.stl"];
         
 
 
         //init first phase
         $( document ).ready(function() {
-            load_phase(2);
+            load_phase(1);
         });
 
         //load phase

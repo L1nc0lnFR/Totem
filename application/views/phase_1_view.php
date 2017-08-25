@@ -1,14 +1,14 @@
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/phase_1_style.css"); ?><?php echo '?'.mt_rand(); ?>" >
+<link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/phase_1_style.css"); ?><?php echo '?'.mt_rand(); ?>" >
 
-<script src="<?php echo base_url("assets/3D_Viewer/three.min.js"); ?><?php echo '?'.mt_rand(); ?>" ></script>
-<script src="<?php echo base_url("assets/3D_Viewer/STLLoader.js"); ?><?php echo '?'.mt_rand(); ?>" ></script>
-<script src="<?php echo base_url("assets/3D_Viewer/OBJLoader.js"); ?><?php echo '?'.mt_rand(); ?>" ></script>
-<script src="<?php echo base_url("assets/3D_Viewer/GCODELoader.js"); ?><?php echo '?'.mt_rand(); ?>" ></script>
-<script src="<?php echo base_url("assets/3D_Viewer/Detector.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
-<script src="<?php echo base_url("assets/3D_Viewer/stats.min.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
-<script src="<?php echo base_url("assets/3D_Viewer/OrbitControls.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
-<script src="<?php echo base_url("assets/3D_Viewer/3D_Viewer.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
+<script src="<?php echo base_url("/assets/3D_Viewer/three.min.js"); ?><?php echo '?'.mt_rand(); ?>" ></script>
+<script src="<?php echo base_url("/assets/3D_Viewer/STLLoader.js"); ?><?php echo '?'.mt_rand(); ?>" ></script>
+<script src="<?php echo base_url("/assets/3D_Viewer/OBJLoader.js"); ?><?php echo '?'.mt_rand(); ?>" ></script>
+<script src="<?php echo base_url("/assets/3D_Viewer/GCODELoader.js"); ?><?php echo '?'.mt_rand(); ?>" ></script>
+<script src="<?php echo base_url("/assets/3D_Viewer/Detector.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
+<script src="<?php echo base_url("/assets/3D_Viewer/stats.min.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
+<script src="<?php echo base_url("/assets/3D_Viewer/OrbitControls.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
+<script src="<?php echo base_url("/assets/3D_Viewer/3D_Viewer.js"); ?><?php echo '?'.mt_rand(); ?>"></script>
 
 
 <script type="x-shader/x-vertex" id="vertexShader">
@@ -46,6 +46,13 @@
 </div>
 
 <script>
+     var urlAjax = "<?php 
+                if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                    echo "http://127.0.0.1/commonslabe";
+                } else {
+                    echo "http://127.0.0.1";
+                } ?>";
+
     var sourceType ='';
     var path = '';
     selected_file = [];
@@ -233,7 +240,7 @@
 
     function getFileList() {
         return JSON.parse($.ajax({  
-                url: "http://127.0.0.1/commonslab/totem/index.php/phase_1/getFileList",
+                url: urlAjax+"/Totem/index.php/phase_1/getFileList",
                 method: "POST",
                 data: { sourceType: sourceType, path:path },
                 dataType :'text',
@@ -252,7 +259,7 @@
             filePath = '/'+filePath;
         }
         return $.ajax({  
-                url: "http://127.0.0.1/commonslab/totem/index.php/phase_1/getFullPath",
+                url: urlAjax+"/Totem/index.php/phase_1/getFullPath",
                 method: "POST",
                 data: { sourceType: sourceType, path:path+filePath },
                 dataType :'text',

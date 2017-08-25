@@ -101,7 +101,7 @@ var Viewer_Namespace = {
         //Viewer_Namespace.scene.add( sky );
 
         // Viewer_Namespace.renderer
-        Viewer_Namespace.renderer = new THREE.WebGLRenderer( { antialias: true } );
+        Viewer_Namespace.renderer = new THREE.WebGLRenderer( { antialias: false } );
         Viewer_Namespace.renderer.setPixelRatio( window.devicePixelRatio );
         Viewer_Namespace.renderer.setSize( Viewer_Namespace.wsize, Viewer_Namespace.hsize );
         //Viewer_Namespace.renderer.gammaInput = true;

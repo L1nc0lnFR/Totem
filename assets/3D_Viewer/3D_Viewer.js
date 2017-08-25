@@ -61,7 +61,7 @@ var Viewer_Namespace = {
         Viewer_Namespace.hemiLight.color.setHSL( 0.6, 1, 0.6 );
         Viewer_Namespace.hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
         Viewer_Namespace.hemiLight.position.set( 0, 50, 0 );
-        Viewer_Namespace.scene.add( Viewer_Namespace.hemiLight );
+        //Viewer_Namespace.scene.add( Viewer_Namespace.hemiLight );
         Viewer_Namespace.hemiLightHelper = new THREE.HemisphereLightHelper( Viewer_Namespace.hemiLight, 10 );
         //scene.add( hemiLightHelper );
 
@@ -70,7 +70,7 @@ var Viewer_Namespace = {
         Viewer_Namespace.dirLight.color.setHSL( 0.1, 1, 0.95 );
         Viewer_Namespace.dirLight.position.set( -1, 1, 1 );
         Viewer_Namespace.dirLight.position.multiplyScalar( 20 );
-        Viewer_Namespace.scene.add( Viewer_Namespace.dirLight );
+        //Viewer_Namespace.scene.add( Viewer_Namespace.dirLight );
         //Viewer_Namespace.dirLight.castShadow = true;
         //Viewer_Namespace.dirLight.shadow.mapSize.width = 2048;
         //Viewer_Namespace.dirLight.shadow.mapSize.height = 2048;

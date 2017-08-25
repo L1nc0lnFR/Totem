@@ -36,7 +36,7 @@ var Viewer_Namespace = {
         plane.position.set(0,-0.1, 0);
         Viewer_Namespace.rotateObject( plane, 90, 180 ,0);
         Viewer_Namespace.scene.add( plane );
-        plane.receiveShadow = true;
+        //plane.receiveShadow = true;
 
         // max height
         var sizeheight = Viewer_Namespace.bedSizeW;
@@ -71,16 +71,16 @@ var Viewer_Namespace = {
         Viewer_Namespace.dirLight.position.set( -1, 1, 1 );
         Viewer_Namespace.dirLight.position.multiplyScalar( 20 );
         Viewer_Namespace.scene.add( Viewer_Namespace.dirLight );
-        Viewer_Namespace.dirLight.castShadow = true;
-        Viewer_Namespace.dirLight.shadow.mapSize.width = 2048;
-        Viewer_Namespace.dirLight.shadow.mapSize.height = 2048;
+        //Viewer_Namespace.dirLight.castShadow = true;
+        //Viewer_Namespace.dirLight.shadow.mapSize.width = 2048;
+        //Viewer_Namespace.dirLight.shadow.mapSize.height = 2048;
         var d = 50;
-        Viewer_Namespace.dirLight.shadow.camera.left = -d;
-        Viewer_Namespace.dirLight.shadow.camera.right = d;
-        Viewer_Namespace.dirLight.shadow.camera.top = d;
-        Viewer_Namespace.dirLight.shadow.camera.bottom = -d;
-        Viewer_Namespace.dirLight.shadow.camera.far = 3500;
-        Viewer_Namespace.dirLight.shadow.bias = -0.0001;
+        //Viewer_Namespace.dirLight.shadow.camera.left = -d;
+        //Viewer_Namespace.dirLight.shadow.camera.right = d;
+        //Viewer_Namespace.dirLight.shadow.camera.top = d;
+        //Viewer_Namespace.dirLight.shadow.camera.bottom = -d;
+        //Viewer_Namespace.dirLight.shadow.camera.far = 3500;
+        //iewer_Namespace.dirLight.shadow.bias = -0.0001;
         Viewer_Namespace.dirLightHeper = new THREE.DirectionalLightHelper( Viewer_Namespace.dirLight, 10 ) 
         //scene.add( dirLightHeper );
 
@@ -181,8 +181,8 @@ var Viewer_Namespace = {
                 //var material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
                 var material = new THREE.MeshNormalMaterial();
                 var mesh = new THREE.Mesh( geometry, material );
-                mesh.castShadow = true;
-                mesh.receiveShadow = true;
+                //mesh.castShadow = true;
+                //mesh.receiveShadow = true;
                 Viewer_Namespace.scene.add( mesh );
         
                 Viewer_Namespace.rotateObject(mesh, -90, 0, 0);

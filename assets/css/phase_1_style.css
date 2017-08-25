@@ -1,0 +1,210 @@
+.phase_1_content .header_text{
+    background-color: lightgray;
+    font-size: 2em;
+    padding:10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.phase_1_content .source_list{
+    margin-top: 20%;
+    display: flex;
+    width:50%;
+    margin-left: 25%;
+    justify-content: space-between;
+
+}
+
+.phase_1_content .source_list.small{
+    transition: margin-top 300ms, margin-left 300ms, justify-content 300ms, top 300ms;    
+    margin-top:0px;
+    margin-left:5px;
+    justify-content:normal;
+    position: absolute;
+    top: 42px;
+}
+
+.phase_1_content .source_list > .source_btn > span {
+    width: 91px;
+}
+
+.phase_1_content .source_list > .source_btn{
+    transition: padding 200ms, font-size 200ms, margin 200ms height 200ms;
+    padding: 10px;
+    font-size: 1em;
+    height :20px;
+    margin: 5px;
+}
+
+.phase_1_content .source_list.small > .source_btn > i {
+    transition: margin-right 200ms;
+    margin-right: 0px;
+}
+
+.phase_1_content .source_list.small > .source_btn{
+    transition:background-color 200ms;
+    background-color: white;
+}
+
+.phase_1_content .source_list > .source_btn.selected{
+    background-color: #a3a3a3;
+}
+
+
+.phase_1_content .source_list.small > .source_btn > span{
+    transition: opacity 100ms, width 100ms; 
+    opacity:0;
+    width:0px;
+}
+
+.phase_1_content .source_btn{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: lightgray;
+    padding: 20px;
+    font-size: 1.3em;
+}
+
+.phase_1_content .source_btn > i{
+    margin-right: 5px;
+}
+
+.phase_1_content .folder, .phase_1_content .file{
+    display: flex;
+    padding:10px;
+    font-size:1.3em;
+} 
+
+.phase_1_content .folder{
+    background-color: #faffff;
+}
+.phase_1_content .file{
+    background-color: lightcyan;
+}
+
+
+.phase_1_content .folder > i, .phase_1_content .file > .checkbox, .phase_1_content .file > .directPrint,  .phase_1_content .file > .size, .phase_1_content .file > .type {
+margin-right: 10px;
+} 
+
+.phase_1_content .name{
+    margin-right: auto;
+}
+
+.phase_1_content .path{
+    padding:10px;
+    font-size: 1.2em;
+    display: flex;
+    background-color: lightskyblue;
+    align-items: center;
+}
+
+.phase_1_content .path > .back{
+    padding:10px;
+    background-color: white;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.phase_1_content .path > span{
+    font-size: 1.3em;
+}
+
+
+.phase_1_content .file_selected{
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    background-color:lightskyblue; 
+    font-size: 1.3em;
+    color:white;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+    display: none;
+    max-height: 55px;
+}
+
+.phase_1_content .file_selected>.nb_selected{
+    padding:10px;
+}
+
+.phase_1_content .file_selected>.go_button{
+    background-color: white;
+    color: lightskyblue; 
+    text-align: center;
+    padding: 5px;
+    margin:10px;
+}
+
+
+.phase_1_content .files{
+    overflow: scroll;
+    height: 380px;
+    padding-bottom: 54px;
+}
+
+.no_file_feather_style{
+    padding:10px;
+}
+.featherlight-content{
+    overflow: auto;
+}
+.featherlight-content .loading{
+    display: none;
+    position:absolute;
+    color:white;
+    font-size: 2em;
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    width: calc( 100% - 20px);
+    height:calc( 100% - 10px);
+    margin-left:auto;
+    margin-right: auto;
+    overflow: auto;
+}
+
+.featherlight-content .loading > i{
+    overflow: auto;
+}
+
+.featherlight-content .warning{
+    display: none;
+    position: absolute;
+    left:0;
+    width:100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    left: 0;
+    width: 100%;
+}
+
+.featherlight-content .warning > p{
+    
+    color:black;
+    font-size: 1em;
+}
+
+.featherlight-content .disclaimer{
+    text-align: center;
+}
+
+.featherlight-content .disclaimer p:last-child{
+    margin-top: 40px;
+}
+
+.featherlight-content .disclaimer span{
+    background: lightblue;
+    padding: 10px;
+}
+
+.featherlight-content .disclaimer span:first-child{
+    margin-right: 50px;
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0043)http://127.0.0.1/commonslab/totem/index.php -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Totem</title>
+        <script src="./Totem_files/jquery-3.2.1.min.js.téléchargement"></script>
+        <link rel="stylesheet" type="text/css" href="./Totem_files/jquery-ui.min.css">
+        <script src="./Totem_files/jquery-ui.min.js.téléchargement"></script>
+        <script src="./Totem_files/jquery.ui.touch-punch.min"></script>
+        
+        <link rel="stylesheet" type="text/css" href="./Totem_files/main_style.css">
+        <link rel="stylesheet" type="text/css" href="./Totem_files/font-awesome.min.css">
+        <script src="./Totem_files/featherlight.min.js.téléchargement"></script>
+		<link rel="stylesheet" type="text/css" href="./Totem_files/featherlight.min.css">
+    </head>
+    <body>
+        <div class="header">
+            <div data-phase="1" class="phase_1 phase_btn">Phase 1</div>
+            <div data-phase="2" class="phase_2 phase_btn">Phase 2</div>
+            <div data-phase="3" class="phase_3 phase_btn">Phase 3</div>
+            <div data-phase="4" class="phase_4 phase_btn">Phase 4</div>
+        </div>
+        <div class="page_content" style=""><link rel="stylesheet" type="text/css" href="./Totem_files/phase_2_style.css">
+
+<script src="./Totem_files/three.min.js.téléchargement"></script>
+<script src="./Totem_files/STLLoader.js.téléchargement"></script>
+<script src="./Totem_files/OBJLoader.js.téléchargement"></script>
+<script src="./Totem_files/GCODELoader.js.téléchargement"></script>
+<script src="./Totem_files/Detector.js.téléchargement"></script>
+<script src="./Totem_files/stats.min.js.téléchargement"></script>
+<script src="./Totem_files/OrbitControls.js.téléchargement"></script>
+<script src="./Totem_files/SimplifyModifier.js.téléchargement"></script>
+<script src="./Totem_files/3D_Editor.js.téléchargement"></script>
+
+
+<script type="x-shader/x-vertex" id="vertexShader">
+			varying vec3 vWorldPosition;
+			void main() {
+				vec4 worldPosition = modelMatrix * vec4( position, 1.0 );
+				vWorldPosition = worldPosition.xyz;
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+			}
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentShader">
+    uniform vec3 topColor;
+    uniform vec3 bottomColor;
+    uniform float offset;
+    uniform float exponent;
+    varying vec3 vWorldPosition;
+    void main() {
+        float h = normalize( vWorldPosition + offset ).y;
+        gl_FragColor = vec4( mix( bottomColor, topColor, max( pow( max( h , 0.0), exponent ), 0.0 ) ), 1.0 );
+    }
+</script>
+
+<div class="content phase_2_content" style="">
+    <div class="no_file_selected" style="display: none;">
+        <p>You have to select at least one file to print</p>
+        <p>Go back to Phase 1 :)</p>
+    </div>
+
+    <div id="3D_canvas"><div><canvas width="977" height="575" style="width: 977px; height: 575px;"></canvas></div></div>
+    <div class="scale">
+        <div class="big_icon"><i class="fa fa-cube" aria-hidden="true"></i></div>
+        <div class="ruler">
+            <div class="support"></div>
+            <div class="handle"><i class="fa fa-circle" aria-hidden="true"></i></div>
+        </div>
+        <div class="small_icon"><i class="fa fa-cube" aria-hidden="true"></i></div>
+    </div>
+    <div class="position"></div>
+    <div class="rotation">
+        <div class="container">
+            <div id="circle">
+                <div id="slider"></div>
+                <div id="axis_info">Z</div>
+            </div>
+        </div>
+    </div>
+    <div class="name">
+        <div class="previous"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i></div>
+        <div class="info"></div>
+        <div class="next"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i></div>
+    </div>
+    <div class="select_group"><i class="fa fa-object-group" aria-hidden="true"></i><span>Select all objects</span></div>
+    <div class="duplicate"></div>
+    <div class="go_phase_3"></div>
+    <div class="loading" style="display: none;"><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span></div>
+</div>
+<script>
+    if(selected_file.length > 0){
+        $('.no_file_selected').hide();
+    }
+
+    if(selected_file.length > 0){
+        if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+        Editor_Namespace.init_3D_viewer( selected_file , document.getElementById("3D_canvas") );
+        Editor_Namespace.animate_3D_viewer();
+    }
+
+    var val = 0;
+    $('.phase_2_content .ruler .handle').on('touchstart mousedown', function(e){
+        e.preventDefault();
+        var drag = true;
+        $(document).on('touchmove mousemove', function(e){
+            var ev;
+            if(e.type=='touchmove'){
+                ev = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+            }else{
+                ev = e;
+            }
+            if(drag){
+                var offset =  $('.phase_2_content .ruler').offset();
+                var relativeY = (ev.pageY - offset.top);
+
+                if( relativeY > 7 &&  relativeY < 290 ){
+                    val = relativeY;
+                }else if(relativeY < 7 ){
+                    val =  7;
+                }else if( relativeY < 290 ){
+                    val = relativeY;
+                }else if(relativeY > 290){
+                    val =  290;
+                }
+                $('.phase_2_content .ruler .handle').css('top', val-15  );
+                var scale = ( 2 - ( ( ( ( parseInt($('.phase_2_content .ruler .handle').css('top'))+8)*400)/283 )/200 ) ).toFixed(2);
+                Editor_Namespace.setSelectedScale(scale);
+                
+                //var relativeX = (e.pageX - offset.left);
+            }
+        });
+        $(document).on('touchend mouseup', function(){
+            drag = false;
+        });
+    });
+
+
+    function setSliderScale(scale){
+        var scalePx = ( ( 283 - 8 )/2 ) * (2-scale);
+        $('.phase_2_content .ruler .handle').css('top', scalePx);
+    }
+
+
+    $('.phase_2_content .rotation #slider').on('touchstart mousedown', function(e){
+        var container = $('#circle');
+        var slider = $('#slider');
+        var sliderW2 = slider.width()/2;
+        var sliderH2 = slider.height()/2;    
+        var radius =( $('#circle').width()/2 ) ;
+        var deg = 0;    
+        var elP = $('#circle').offset();
+        var elPos = { x: elP.left, y: elP.top};
+        var X = 0, Y = 0;
+        var mdown = false;
+
+        var drag = true;
+        $(document).on('touchmove mousemove', function(e){
+            if(drag){
+               var mPos = {x: e.clientX-elPos.x, y: e.clientY-elPos.y};
+               var atan = Math.atan2(mPos.x-radius, mPos.y-radius);
+               deg = -atan/(Math.PI/180) + 180; // final (0-360 positive) degrees from mouse position 
+                
+               X = Math.round(radius* Math.sin(deg*Math.PI/180));    
+               Y = Math.round(radius*  -Math.cos(deg*Math.PI/180));
+               slider.css({ left: X+radius-sliderW2, top: Y+radius-sliderH2 });              
+               // AND FINALLY apply exact degrees to ball rotation
+               slider.css({ WebkitTransform: 'rotate(' + deg + 'deg)'});
+               slider.css({ '-moz-transform': 'rotate(' + deg + 'deg)'});
+               console.log(deg);
+            }
+        });
+        $(document).on('touchend mouseup', function(){
+            drag = false;
+        });
+    });
+
+</script></div>
+    
+    <script>
+
+        var selected_file = [];
+        
+        //debug
+        selected_file = ["files/uploaded/3DBenchy.stl", "files/uploaded/HABU_stand.stl","files/uploaded/Lockheed_Stand.stl"];
+        
+
+
+        //init first phase
+        $( document ).ready(function() {
+            load_phase(2);
+        });
+
+        //load phase
+        $(".phase_btn").on('click', function(){
+            var phase = $(this).attr('data-phase');
+            load_phase(phase);
+        });
+
+        function load_phase(phase){
+            
+            if (typeof Editor_Namespace !== 'undefined') {
+                console.log(Editor_Namespace.running);
+                if(Editor_Namespace.running){
+                    Editor_Namespace.kill();
+                }
+            }
+
+            if (typeof Viewer_Namespace !== 'undefined') {
+                if(Viewer_Namespace.running){
+                    Viewer_Namespace.kill();
+                }
+            }
+            
+           
+
+            $.ajax({  
+                    url: "http://127.0.0.1/commonslab/totem/index.php/main/load_phase",
+                    method: "POST",
+                    data: { phase: phase },
+                    dataType :'text',
+                    async:false,
+                    context: document.body
+            }).done(function( msg) {
+                $('.page_content').fadeOut(100, function(){
+
+                    $('.page_content').html('');
+                    $('.page_content').html( $(msg) ).hide().fadeIn(100);
+
+                    $('.page_content .content').hide();
+                    var everythingLoaded = setInterval(function() {
+                        if (/loaded|complete/.test(document.readyState)) {
+                            clearInterval(everythingLoaded);
+                            $('.page_content .content').fadeIn();
+                        }
+                    }, 10);
+
+                   
+                });
+            }).fail(function(){
+                console.log('fail');
+                alert('ERREUR : PHP HS');
+            });
+        }
+    </script></body></html>

@@ -1,0 +1,47 @@
+---
+duree : 20
+musique : webcastor.mp3
+sequence :
+
+- selecteur : unique
+  parametre : { id: 21 }
+
+- selecteur : aleatoire
+  parametre : { tag: [1111] }
+- selecteur : aleatoire
+  parametre : {
+    tag: [luge],
+    clickTag: {rythme: 3}
+  }
+- selecteur : aleatoire
+  parametre : {
+    tag: [groupe],
+    clickTag: {rythme: 3}
+  }
+
+- selecteur : semblable
+  parametre : {
+    position: 0,
+    tag favoris: [ groupe ]
+  }
+- selecteur : GET
+  parametre : {
+    nom: activite,
+    proposition: [
+      "luge": {
+        type: aleatoire,
+        parametre: {
+          tag: [ luge ]
+        }
+      },
+      "freestyle": {
+        type: aleatoire,
+        parametre: {
+          tag: [ ski freestyle ]
+        }
+      }
+    ]
+  }
+ 
+ 
+# ?activite=luge    

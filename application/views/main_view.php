@@ -60,7 +60,7 @@
            
 
             $.ajax({  
-                    url: "http://127.0.0.1/commonslab/totem/index.php/main/load_phase",
+                    url: "http://127.0.0.1/Totem/index.php/main/load_phase",
                     method: "POST",
                     data: { phase: phase },
                     dataType :'text',

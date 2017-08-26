@@ -11,7 +11,9 @@ Made with  :
 - JQuery 3.2.1
 - Featherlight 1.7.8
 - OctoPrint0.14
-	
+
+GCODE parser inspired by @github/joewalnes 
+
 	Made for Raspberry Pi 2 B, but will work on Windows with a few adjustement.
 
 TODO :

@@ -130,13 +130,13 @@ var Editor_Namespace = {
             Editor_Namespace.scene.add( sky );
     
             // Editor_Namespace.renderer
-            Editor_Namespace.renderer = new THREE.WebGLRenderer( { antialias: false } );
+            Editor_Namespace.renderer = new THREE.WebGLRenderer( { antialias: true } );
             Editor_Namespace.renderer.setPixelRatio( window.devicePixelRatio );
             Editor_Namespace.renderer.setSize( Editor_Namespace.wsize, Editor_Namespace.hsize );
-            //Editor_Namespace.renderer.gammaInput = true;
-            //Editor_Namespace.renderer.gammaOutput = true;
-            //Editor_Namespace.renderer.shadowMap.enabled = true;
-            //Editor_Namespace.renderer.shadowMap.renderReverseSided = false;
+            Editor_Namespace.renderer.gammaInput = true;
+            Editor_Namespace.renderer.gammaOutput = true;
+            Editor_Namespace.renderer.shadowMap.enabled = true;
+            Editor_Namespace.renderer.shadowMap.renderReverseSided = false;
             Editor_Namespace.container.appendChild( Editor_Namespace.renderer.domElement );
     
             //Editor_Namespace.controls

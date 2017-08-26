@@ -19,6 +19,7 @@ Made for Raspberry Pi 2 B, but will work on Windows with a few adjustement.
 TODO :
 
 GENERAL :
+-  [ ] General optimization for raspberry WebGl issue 
 -  [ ] Better CSS
 -  [ ] More user friendly language ( ex : change "phase" for "step" )
 -  [ ] Add info bubble
@@ -61,7 +62,7 @@ Phase 3:
 -  [ ] Check GCODE for error if comming from phase 1
 
 Phase 4:
--  [ ] OctoPrint interaction
+-  [ ] OctoPrint interaction ( rest API / Curl )
 -  [ ] if not canceled, prevent go back to other phase
 -  [ ] printer controle ( position, pause, stop, cancel etc...à
 -  [ ] Monitoring ( live Gcode, temp, stat, etc... )

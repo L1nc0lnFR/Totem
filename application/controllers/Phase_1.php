@@ -7,19 +7,26 @@ class Phase_1 extends CI_Controller {
 	{
 		
     }
-    
-    function getFileList(){
 
-        
-
+    function gedDir($sourcetype){
+        $dir = "";
         switch($_POST['sourceType']){
             case 'sdcard' :
                 // linux get sdcard
-                $dir = "";
+                if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                    $dir = "C:/wamp64/www/commonslab/Totem/files/uploaded";
+                } else {
+                    // to designated SD card !
+                    $dir = "/dev/sda/";
+                }
                 break;
             case 'usb' :
                 // linux get USB
-                $dir = "";
+                if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                    $dir = "C:/wamp64/www/commonslab/Totem/files/uploaded";
+                } else {
+                    $dir = "/dev/sda/";
+                }
                 break;
             case 'uploaded' :
                 // from file of www folder
@@ -30,7 +37,13 @@ class Phase_1 extends CI_Controller {
                 }
                 break;
         }
-        
+        return $dir;
+    }
+    
+    function getFileList(){
+
+        $dir = $this->gedDir($_POST['sourceType']);
+
         $files 	= scandir($dir.$_POST['path']);
         sort($files);
         $result = array();
@@ -60,20 +73,7 @@ class Phase_1 extends CI_Controller {
     }
 
     function getFullPath(){
-        switch($_POST['sourceType']){
-            case 'sdcard' :
-                // linux get sdcard
-                $dir = "";
-                break;
-            case 'usb' :
-                // linux get USB
-                $dir = "";
-                break;
-            case 'uploaded' :
-                // from file of www folder
-                $dir = "files/uploaded";
-                break;
-        }
+        $dir = $this->gedDir($_POST['sourceType']);
 
         if( $_POST['path'] == '/' ){
             echo $dir.substr($_POST['path'], 1);
